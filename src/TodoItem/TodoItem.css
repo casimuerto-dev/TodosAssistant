@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+@keyframes increase {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.8);
+  }
+}
+
+@keyframes decrease {
+  from {
+    transform: scale(1.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.itemCompleted {
+  text-decoration: line-through;
+  text-decoration-color:rgb(22, 65, 255) ;
+  text-decoration-thickness: 3px;
+}
+
+.listItem {
+  background-color: rgb(77, 196, 207);
+  color:white;
+  border-radius: 10px;
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+  font-family: 'Handlee', cursive;
+}
+
+.listItem:hover {
+  cursor: context-menu;
+  box-shadow: 0 0 15px white;
+  
+}
+
+.item {
+  margin: 5px;
+  word-wrap: break-word;
+  width: auto;
+  text-align: center;
+  font-size: 24px;
+  
+}
+
+.deleteIcon {
+  font-size: 24px;
+    color: red;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 20px;
+   padding-bottom: 15px;
+  padding-top: 0px;
+}
+
+.deleteIcon:hover {
+  animation-name: increase;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+  
+}
+
+.checkIcon {
+      font-size: 24px;
+  color: green;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  }
+
+.checkIcon:hover {
+  animation-name: increase;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}

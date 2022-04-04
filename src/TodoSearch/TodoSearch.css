@@ -1,0 +1,22 @@
+
+
+.searchBar {
+  background-color: white;
+  border-radius: 10px;
+  width: 80%;
+  height: 24px;
+  color: teal;
+  text-align: center;
+  border: 1px solid black;
+  box-shadow: 0 0 8px black;
+  
+}
+
+.searchBar:focus {
+  outline-color: red;
+}
+
+.searchBar::placeholder {
+  color: teal;
+  text-align: center;
+}
