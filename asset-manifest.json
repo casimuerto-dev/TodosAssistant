@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/first-react-project-todos/static/css/main.d860e9c9.css",
+    "main.js": "/first-react-project-todos/static/js/main.68a922ed.js",
+    "index.html": "/first-react-project-todos/index.html",
+    "main.d860e9c9.css.map": "/first-react-project-todos/static/css/main.d860e9c9.css.map",
+    "main.68a922ed.js.map": "/first-react-project-todos/static/js/main.68a922ed.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d860e9c9.css",
+    "static/js/main.68a922ed.js"
+  ]
+}
