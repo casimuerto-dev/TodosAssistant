@@ -1,10 +1,7 @@
 import React from "react";
-import { TodoContext } from "../TodoContext";
 import "./TodoForm.css";
 
-export function TodoForm() {
-  const { addTodo, onModalOpen } = React.useContext(TodoContext);
-
+export function TodoForm({ addTodo, onModalOpen }) {
   const [textValue, setTextValue] = React.useState("");
 
   const [displayAlert, setDisplayAlert] = React.useState(false);
