@@ -2,6 +2,8 @@ import React from "react";
 import "./TodoList.css";
 
 export function TodoList(props) {
+  const renderFunction = props.render || props.children;
+
   return (
     <ul
       className={`listOfTodos ${
@@ -14,9 +16,11 @@ export function TodoList(props) {
       )}
 
       {props.searchedTodos.length !== 0
-        ? props.searchedTodos.map(props.render)
+        ? props.searchedTodos.map(renderFunction)
         : !props.loading && (
-            <h1 className="empty">No hay TODOs para mostrar!</h1>
+            <h1 className="empty">
+              No hay TODOs para mostrar con {`"${props.searchValue}"`}!
+            </h1>
           )}
     </ul>
   );

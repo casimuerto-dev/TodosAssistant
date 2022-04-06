@@ -8,6 +8,8 @@ import { CreateTodoButton } from "../CreateTodoButton";
 import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
 import "./AppUI.css";
+import { MockComponent } from "./MockComponent";
+import { MockContainer } from "./MockContainer";
 
 // const todos = [
 //   { text: "cortar cebolla", complete: false },
@@ -45,6 +47,7 @@ function App(props) {
       />
 
       <TodoList
+        searchValue={searchValue}
         error={error}
         count={count}
         searchedTodos={searchedTodos}
@@ -52,7 +55,8 @@ function App(props) {
         searchActivated={searchActivated}
         onError={() => <p>Ups... algo salió mal</p>}
         onNoLoadingAndNoCount={() => <h2 className="empty">Crea un TODO!</h2>}
-        render={(todo) => (
+      >
+        {(todo) => (
           <TodoItem
             text={todo.text}
             key={todo.text}
@@ -65,29 +69,7 @@ function App(props) {
             }}
           />
         )}
-      />
-
-      {/* <TodoList loading={loading} searchActivated={searchActivated}>
-        {error && <p>Ups... algo salió mal</p>}
-        {!loading && count === 0 ? (
-          <h2 className="empty">Crea un TODO!</h2>
-        ) : null}
-        {searchedTodos.length !== 0
-          ? searchedTodos.map((todo) => (
-              <TodoItem
-                text={todo.text}
-                key={todo.text}
-                completed={todo.complete}
-                completeClick={() => {
-                  completeClick(todo.text);
-                }}
-                deleteClick={() => {
-                  deleteClick(todo.text);
-                }}
-              />
-            ))
-          : !loading && <h1 className="empty">No hay TODOs para mostrar!</h1>}
-      </TodoList> */}
+      </TodoList>
 
       {open && (
         <Modal>
@@ -96,6 +78,11 @@ function App(props) {
       )}
 
       <CreateTodoButton onClick={onModalOpen} />
+
+      <MockContainer>
+        <MockComponent />
+        <MockComponent />
+      </MockContainer>
     </>
   );
 }

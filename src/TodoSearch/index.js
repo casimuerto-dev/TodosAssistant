@@ -9,6 +9,7 @@ export const TodoSearch = ({ loading, searchValue, handleSearchChange }) => {
       className="searchBar"
       placeholder={!loading ? "¿Qué buscas?" : "Escaneando..."}
       onChange={handleSearchChange}
+      disabled={loading}
     ></input>
   );
 };
