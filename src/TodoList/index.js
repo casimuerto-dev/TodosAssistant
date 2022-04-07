@@ -15,7 +15,7 @@ export function TodoList(props) {
         <h2 className="empty">Crea un TODO!</h2>
       )}
 
-      {props.searchedTodos.length !== 0
+      {props.searchedTodos.length !== 0 && !props.loading
         ? props.searchedTodos.map(renderFunction)
         : !props.loading && (
             <h1 className="empty">

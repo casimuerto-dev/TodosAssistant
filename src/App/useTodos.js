@@ -6,7 +6,9 @@ function useTodos() {
     updatedTodos: currentTodos,
     updateAndStoreTodos: setCurrentTodos,
     loading,
+    setLoading,
     error,
+    setUpdateData,
   } = useLocalStorage("TODOS_V1", []);
 
   const [searchValue, setSearchValue] = React.useState("");
@@ -69,6 +71,7 @@ function useTodos() {
     onModalOpen,
     error,
     loading,
+    setLoading,
     count,
     completed,
     searchValue,
@@ -78,6 +81,7 @@ function useTodos() {
     searchedTodos,
     completeClick,
     deleteClick,
+    setUpdateData,
   };
 }
 

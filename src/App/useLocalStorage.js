@@ -4,6 +4,7 @@ const useLocalStorage = (Item, initialState) => {
   const [updatedTodos, setUpdatedTodos] = React.useState(initialState);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
+  const [updateData, setUpdateData] = React.useState(false);
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -23,7 +24,7 @@ const useLocalStorage = (Item, initialState) => {
         setError(error);
       }
     }, 2500);
-  }, []);
+  }, [updateData]);
 
   const updateAndStoreTodos = (newArr) => {
     try {
@@ -33,7 +34,14 @@ const useLocalStorage = (Item, initialState) => {
       setError(error);
     }
   };
-  return { updatedTodos, updateAndStoreTodos, loading, error };
+  return {
+    updatedTodos,
+    updateAndStoreTodos,
+    loading,
+    setLoading,
+    error,
+    setUpdateData,
+  };
 };
 
 export { useLocalStorage };

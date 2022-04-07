@@ -8,8 +8,7 @@ import { CreateTodoButton } from "../CreateTodoButton";
 import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
 import "./AppUI.css";
-import { MockComponent } from "./MockComponent";
-import { MockContainer } from "./MockContainer";
+import { ChangeAlertWithStorageListener } from "../ChangeAlert";
 
 // const todos = [
 //   { text: "cortar cebolla", complete: false },
@@ -24,6 +23,7 @@ function App(props) {
     addTodo,
     error,
     loading,
+    setLoading,
     count,
     completed,
     searchedTodos,
@@ -32,6 +32,7 @@ function App(props) {
     completeClick,
     deleteClick,
     searchActivated,
+    setUpdateData,
   } = useTodos();
   return (
     <>
@@ -78,11 +79,10 @@ function App(props) {
       )}
 
       <CreateTodoButton onClick={onModalOpen} />
-
-      <MockContainer>
-        <MockComponent />
-        <MockComponent />
-      </MockContainer>
+      <ChangeAlertWithStorageListener
+        reload={setUpdateData}
+        setLoading={setLoading}
+      />
     </>
   );
 }
