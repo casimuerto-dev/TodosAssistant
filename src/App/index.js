@@ -8,7 +8,7 @@ import { CreateTodoButton } from "../CreateTodoButton";
 import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
 import "./AppUI.css";
-import { ChangeAlertWithStorageListener } from "../ChangeAlert";
+import { ChangeAlert } from "../ChangeAlert";
 
 // const todos = [
 //   { text: "cortar cebolla", complete: false },
@@ -79,10 +79,7 @@ function App(props) {
       )}
 
       <CreateTodoButton onClick={onModalOpen} />
-      <ChangeAlertWithStorageListener
-        reload={setUpdateData}
-        setLoading={setLoading}
-      />
+      <ChangeAlert setLoading={setLoading} reload={setUpdateData} />
     </>
   );
 }

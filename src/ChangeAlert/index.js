@@ -1,7 +1,9 @@
 import React from "react";
-import { withStorageListener } from "./withStorageListener";
+import { useStorageListener } from "./useStorageListener";
 
-function ChangeAlert({ show, toggleShow, reload, setLoading }) {
+export function ChangeAlert({ reload, setLoading }) {
+  const { show, toggleShow } = useStorageListener();
+
   if (show) {
     return (
       <>
@@ -21,7 +23,3 @@ function ChangeAlert({ show, toggleShow, reload, setLoading }) {
     return null;
   }
 }
-
-const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert);
-
-export { ChangeAlertWithStorageListener };
