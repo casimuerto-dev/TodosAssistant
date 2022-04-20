@@ -42,7 +42,7 @@ export function TodoForm({ addTodo, onModalOpen }) {
       {displayAlert && <p className="smallAlert">Porfa escribe algo</p>}
       <div className="buttonsDiv">
         <button className="CrearTodo" type="submit">
-          Add
+          Agregar!
         </button>
         <button className="CerrarModal" type="button" onClick={onModalOpen}>
           ✗

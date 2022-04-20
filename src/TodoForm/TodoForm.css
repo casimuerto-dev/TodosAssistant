@@ -39,14 +39,15 @@
 
 .TodoCreator:focus{outline:1px solid rgb(0, 0, 0);}
 
-.buttonsDiv {
+.buttonsDiv {width: 300px;
   display: flex;
   justify-content: space-around;
+  
 }
 
 .CrearTodo {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   height: 35px;
   width: 100px;
   border-radius: 20px;
@@ -92,7 +93,7 @@
   .form{width:200px;}
   .TodoCreator{width:190px;line-height: 25px; font-size: 15px;}
   .buttonsDiv{width:220px ;}
-  .CrearTodo{width: 80px;}
+  .CrearTodo{width: 80px; font-size: 17px;}
   .CerrarModal{width: 80px;}
   
   }
