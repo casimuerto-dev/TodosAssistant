@@ -10,13 +10,7 @@ import { TodoForm } from "../TodoForm";
 import "./AppUI.css";
 import { ChangeAlert } from "../ChangeAlert";
 
-// const todos = [
-//   { text: "cortar cebolla", complete: false },
-//   { text: "tomar curso intro react", complete: false },
-//   { text: "llorar con la llorona", complete: false },
-// ];
-
-function App(props) {
+function App() {
   const {
     open,
     onModalOpen,
