@@ -34,7 +34,7 @@ export function TodoForm({ addTodo, onModalOpen }) {
           setDisplayAlert(false);
         }}
         className="TodoCreator"
-        placeholder="Escribe tu nuevo TODO!"
+        placeholder="Escribe tu nueva tarea!"
       ></textarea>
       {display && (
         <p className="smallAlert">Llegaste al máximo de caracteres!</p>

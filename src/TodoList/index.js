@@ -12,16 +12,16 @@ export function TodoList(props) {
     >
       {props.error && props.onError()}
       {!props.loading && props.count === 0 && (
-        <h2 className="empty">Crea un TODO!</h2>
+        <h2 className="empty">Crea una tarea!</h2>
       )}
 
-      {props.searchedTodos.length !== 0 && !props.loading
-        ? props.searchedTodos.map(renderFunction)
-        : !props.loading && (
-            <h1 className="empty">
-              No hay TODOs para mostrar con {`"${props.searchValue}"`}!
-            </h1>
-          )}
+      {props.searchedTodos.length !== 0 && !props.loading ? (
+        props.searchedTodos.map(renderFunction)
+      ) : !props.loading && props.count !== 0 ? (
+        <h1 className="empty">
+          No hay tareas para mostrar con {`'${props.searchValue}'.`}
+        </h1>
+      ) : null}
     </ul>
   );
 }

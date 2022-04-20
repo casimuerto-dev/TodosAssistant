@@ -53,3 +53,7 @@ animation-iteration-count: infinite;
 animation-timing-function: linear;
 }
 
+@media (max-width:411px){
+  .listOfTodos{width:280px;}
+  
+  }
