@@ -9,7 +9,11 @@ function TodoCounter({ count, completed, toggle }) {
       </h1>
     );
   } else {
-    return <h1 className="counter">No tienes tareas!</h1>;
+    return (
+      <h1 className={`counter ${!toggle && "MyOtherClass"}`}>
+        No tienes tareas!
+      </h1>
+    );
   }
 }
 

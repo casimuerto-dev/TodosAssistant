@@ -12,7 +12,9 @@ export function TodoList(props) {
     >
       {props.error && props.onError()}
       {!props.loading && props.count === 0 && (
-        <h2 className="empty">Crea una tarea!</h2>
+        <h2 className={`empty ${props.toggle && "toggledEmpty"}`}>
+          Crea una tarea!
+        </h2>
       )}
 
       {props.searchedTodos.length !== 0 && !props.loading ? (
