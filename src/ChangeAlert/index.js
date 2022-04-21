@@ -7,8 +7,9 @@ export function ChangeAlert({ reload, setLoading }) {
   if (show) {
     return (
       <>
-        <p>Hubo cambios!</p>
+        <p style={{ color: "white", fontFamily: "cursive" }}>Hubo cambios!</p>
         <button
+          className="listItem"
           onClick={() => {
             toggleShow(false);
             reload((prev) => !prev);

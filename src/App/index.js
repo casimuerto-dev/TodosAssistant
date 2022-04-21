@@ -9,6 +9,7 @@ import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
 import "./AppUI.css";
 import { ChangeAlert } from "../ChangeAlert";
+import { Toggle } from "../Toggle";
 
 function App() {
   const {
@@ -27,11 +28,13 @@ function App() {
     deleteClick,
     searchActivated,
     setUpdateData,
+    toggle,
+    setToggle,
   } = useTodos();
   return (
     <>
       {!loading ? (
-        <TodoCounter count={count} completed={completed} />
+        <TodoCounter count={count} completed={completed} toggle={toggle} />
       ) : (
         <div className="topSkeleton"></div>
       )}
@@ -42,6 +45,7 @@ function App() {
       />
 
       <TodoList
+        toggle={toggle}
         searchValue={searchValue}
         error={error}
         count={count}
@@ -49,10 +53,10 @@ function App() {
         loading={loading}
         searchActivated={searchActivated}
         onError={() => <p>Ups... algo salió mal</p>}
-        onNoLoadingAndNoCount={() => <h2 className="empty">Crea un TODO!</h2>}
       >
         {(todo) => (
           <TodoItem
+            toggle={toggle}
             text={todo.text}
             key={todo.text}
             completed={todo.complete}
@@ -68,11 +72,18 @@ function App() {
 
       {open && (
         <Modal>
-          <TodoForm addTodo={addTodo} onModalOpen={onModalOpen} />
+          <TodoForm
+            toggle={toggle}
+            addTodo={addTodo}
+            onModalOpen={onModalOpen}
+          />
         </Modal>
       )}
 
       <CreateTodoButton onClick={onModalOpen} />
+
+      <Toggle toggle={toggle} setToggle={setToggle} />
+
       <ChangeAlert setLoading={setLoading} reload={setUpdateData} />
     </>
   );

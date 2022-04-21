@@ -1,16 +1,17 @@
 .addTodoButton {
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: bolder;
-  font-size: 35px;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   border: none;
-  background-color: rgb(177, 8, 140);
-  border-radius: 50%;
-  box-shadow: 0px 0px 5px white;
+  background-color: rgb(85, 159, 35);
+    box-shadow: 0px 0px 15px rgb(0, 0, 0);
   margin-top: 15px;
   height: 40px;
   width: 40px;
-
+  border-radius: 50%;
   animation: counterRotate 0.5s linear;
 }
 
@@ -38,4 +39,10 @@
 
 .addTodoButton:hover {
   animation: rotate 0.5s linear;
+  cursor: pointer;
 }
+
+@media (max-width:412px){
+  .addTodoButton{font-size: 20px;}
+  
+  }

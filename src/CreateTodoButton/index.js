@@ -3,8 +3,8 @@ import "./CreateTodoButton.css";
 
 export function CreateTodoButton(props) {
   return (
-    <button onClick={props.onClick} className="addTodoButton">
-      +
-    </button>
+    <div onClick={props.onClick} className="addTodoButton">
+      <p>+</p>
+    </div>
   );
 }

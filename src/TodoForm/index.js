@@ -1,7 +1,7 @@
 import React from "react";
 import "./TodoForm.css";
 
-export function TodoForm({ addTodo, onModalOpen }) {
+export function TodoForm({ addTodo, onModalOpen, toggle }) {
   const [textValue, setTextValue] = React.useState("");
 
   const [displayAlert, setDisplayAlert] = React.useState(false);
@@ -25,7 +25,7 @@ export function TodoForm({ addTodo, onModalOpen }) {
   }
 
   return (
-    <form className="Form" onSubmit={handleSubmit}>
+    <form className={`Form ${toggle && "toggledForm"}`} onSubmit={handleSubmit}>
       <textarea
         maxLength={"35"}
         value={textValue}
@@ -41,10 +41,17 @@ export function TodoForm({ addTodo, onModalOpen }) {
       )}
       {displayAlert && <p className="smallAlert">Porfa escribe algo</p>}
       <div className="buttonsDiv">
-        <button className="CrearTodo" type="submit">
+        <button
+          className={`CrearTodo ${toggle && "toggledCrearTodo"}`}
+          type="submit"
+        >
           Agregar!
         </button>
-        <button className="CerrarModal" type="button" onClick={onModalOpen}>
+        <button
+          className={`CerrarModal ${toggle && "toggledCerrarModal"}`}
+          type="button"
+          onClick={onModalOpen}
+        >
           ✗
         </button>
       </div>

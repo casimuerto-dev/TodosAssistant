@@ -18,7 +18,7 @@ export function TodoList(props) {
       {props.searchedTodos.length !== 0 && !props.loading ? (
         props.searchedTodos.map(renderFunction)
       ) : !props.loading && props.count !== 0 ? (
-        <h1 className="empty">
+        <h1 className={`empty ${props.toggle && "toggledEmpty"}`}>
           No hay tareas para mostrar con {`'${props.searchValue}'.`}
         </h1>
       ) : null}

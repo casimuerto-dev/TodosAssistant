@@ -7,13 +7,13 @@
   height: 24px;
   color: teal;
   text-align: center;
-  border: 1px solid black;
+  border: none;
   box-shadow: 0 0 8px black;
   
 }
 
 .searchBar:focus {
-  outline-color: red;
+  outline-color: rgb(100, 112, 242);
 }
 
 .searchBar::placeholder {

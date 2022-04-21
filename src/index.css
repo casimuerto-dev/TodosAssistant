@@ -1,35 +1,95 @@
-body {
-  margin: 0;
-  /* background:  rgb(147, 204, 236); */
-  
-background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/03/Brilliant-wallpaper-desktop-Nice-background.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 110%;
-  background-attachment: fixed;
+@property --mySize {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 25%;
 }
 
-#root {
+@property --myColor {
+  syntax: '<color>';
+  inherits: false;
+  initial-value:rgb(255, 166, 0) ;
+}
+
+@property --myMiddleLine {
+  syntax:'<percentage>';
+  inherits:false;
+  initial-value:45%;
+}
+
+body {
+  margin: 0;      
+  background: linear-gradient(180deg,
+  rgb(176, 235, 255,0.6) 10% ,
+  rgb(176, 235, 255,0.2) 75%,
+  rgba(0, 60, 255, 0.857) 75%,
+  rgb(0, 183, 255) 90%, 
+  rgb(242,209,107) 93%),
+  linear-gradient(180deg,
+   rgba(255, 255, 255, 0.6) 30%,
+  var(--myColor) ),
+   radial-gradient(circle closest-side at 50% 75%,
+   var(--myColor) var(--mySize),
+   rgba(255, 0, 0, 0) 20px);
+   background-repeat: no-repeat;
+  background-attachment: fixed;
+ animation:10s sunshine infinite;
+ animation-timing-function: linear;
+ }
+
+.toggledBody{
+  background: linear-gradient(90deg, rgb(192, 231, 158) var(--myMiddleLine), rgb(226, 191, 149) var(--myMiddleLine));
+  animation-name: middleLineMove;
+  animation-duration: 10s;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes middleLineMove{
+  0%{--myMiddleLine:35%;}
+  50%{--myMiddleLine:65%;}
+  100%{--myMiddleLine:35%;}
+}
+
+@keyframes sunshine {
+  0%{--mySize:20%;
+  --myColor:rgb(255, 100, 0)}
+  20%{
+    --myColor:rgb(255, 166, 0)}   
+
+    50%{--mySize:40%;
+    --myColor:rgb(255,166,0)}
+
+    80%{
+      --myColor:rgb(255, 166, 0)}
+
+    100%{--mySize:20%;
+      --myColor:rgb(255, 100, 0)}
+}
+
+.Root {
   min-width: 40%;
   width: min-content;
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  background: linear-gradient(45deg, rgb(255, 131, 48), rgb(75, 184, 108));
+  background: none;
   margin-top: 3rem;
   margin-bottom: 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 25px;
-  box-shadow: 0px 0px 8px white;
-  padding-bottom: 15px;
+    padding-bottom: 15px;
   padding-left: 10px;
   padding-right: 10px;
-  border: 1px solid black;
+  
   
 }
 
+.MyClass{ background:linear-gradient(45deg, rgb(101, 71, 10) 50%, rgb(7, 120, 29) 50%);}
+
 @media (max-width:411px){
-#root{width:300px;}
+#root{width:80%;}
 
 }

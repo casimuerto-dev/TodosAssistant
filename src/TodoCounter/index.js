@@ -1,10 +1,10 @@
 import "./TodoCounter.css";
 import React from "react";
 
-function TodoCounter({ count, completed }) {
+function TodoCounter({ count, completed, toggle }) {
   if (count !== 0) {
     return (
-      <h1 className="counter">
+      <h1 className={`counter ${!toggle && "MyOtherClass"}`}>
         Has completado {completed} de {count} tareas
       </h1>
     );

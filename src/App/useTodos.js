@@ -13,6 +13,7 @@ function useTodos() {
 
   const [searchValue, setSearchValue] = React.useState("");
   const [open, setOpen] = React.useState(false);
+  const [toggle, setToggle] = React.useState(false);
 
   const onModalOpen = () => {
     setOpen((prevState) => !prevState);
@@ -82,6 +83,8 @@ function useTodos() {
     completeClick,
     deleteClick,
     setUpdateData,
+    toggle,
+    setToggle,
   };
 }
 

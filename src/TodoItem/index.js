@@ -2,7 +2,10 @@ import React from "react";
 import "./TodoItem.css";
 export const TodoItem = (props) => {
   return (
-    <li className={`listItem`} id="forFun">
+    <li
+      className={`listItem ${!props.toggle && "MyOtherOtherClass"}`}
+      id="forFun"
+    >
       <p onClick={props.completeClick} className="checkIcon">
         ✔
       </p>
