@@ -58,13 +58,13 @@ function App() {
           <TodoItem
             toggle={toggle}
             text={todo.text}
-            key={todo.text}
+            key={todo.idCode}
             completed={todo.complete}
             completeClick={() => {
-              completeClick(todo.text);
+              completeClick(todo.idCode);
             }}
             deleteClick={() => {
-              deleteClick(todo.text);
+              deleteClick(todo.idCode);
             }}
           />
         )}

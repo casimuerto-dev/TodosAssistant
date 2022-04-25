@@ -11,8 +11,8 @@ function useTodos() {
     setUpdateData,
   } = useLocalStorage("TODOS_V1", []);
 
-  const [searchValue, setSearchValue] = React.useState("");
   const [open, setOpen] = React.useState(false);
+  const [searchValue, setSearchValue] = React.useState("");
   const [toggle, setToggle] = React.useState(false);
 
   const onModalOpen = () => {
@@ -44,22 +44,31 @@ function useTodos() {
 
   const addTodo = (text) => {
     let workTodoArray = [...currentTodos];
-    workTodoArray.push({ text, complete: false });
+    for (let i = 0; i < 100; i++) {
+      let result = workTodoArray.filter((obj) => obj.idCode === i);
+      if (result.length === 0) {
+        workTodoArray.push({ text, complete: false, idCode: i });
+        break;
+      }
+    }
+
     setCurrentTodos(workTodoArray);
   };
 
-  const completeClick = (text) => {
+  console.log(currentTodos); ////CONSOLE LOG DELETE!!!
+
+  const completeClick = (idCode) => {
     const indexOfTodo = currentTodos.findIndex((todo) => {
-      return todo.text === text;
+      return todo.idCode === idCode;
     });
     let workTodoArray = [...currentTodos];
     workTodoArray[indexOfTodo].complete = true;
     setCurrentTodos(workTodoArray);
   };
 
-  const deleteClick = (text) => {
+  const deleteClick = (idCode) => {
     const indexOfTodo = currentTodos.findIndex((todo) => {
-      return todo.text === text;
+      return todo.idCode === idCode;
     });
     let workTodoArray = [...currentTodos];
     workTodoArray.splice(indexOfTodo, 1);

@@ -40,16 +40,23 @@
   font-family: 'Handlee', cursive;
 }
 
+
+
 .MyOtherOtherClass{
   background-color: rgba(255, 255, 255, 0) !important;
   color:brown !important;
 }
 
 .listItem:hover {
-  cursor: context-menu;
+  cursor: grab;
   box-shadow: 0 0 15px white;
   
 }
+
+.listItem:active{cursor: grabbing;
+}
+
+
 
 .item {
   margin: 5px;
@@ -96,3 +103,6 @@
   animation-fill-mode: forwards;
   cursor: pointer;
 }
+
+
+.dragging{background-color: rgb(85, 255, 255) !important;}
