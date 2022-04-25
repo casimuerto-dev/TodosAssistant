@@ -14,6 +14,11 @@ function useTodos() {
   const [open, setOpen] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
   const [toggle, setToggle] = React.useState(false);
+  const [toggleEditTodo, setToggleEditTodo] = React.useState({
+    status: false,
+    text: "",
+    todoId: "",
+  });
 
   const onModalOpen = () => {
     setOpen((prevState) => !prevState);
@@ -55,8 +60,6 @@ function useTodos() {
     setCurrentTodos(workTodoArray);
   };
 
-  console.log(currentTodos); ////CONSOLE LOG DELETE!!!
-
   const completeClick = (idCode) => {
     const indexOfTodo = currentTodos.findIndex((todo) => {
       return todo.idCode === idCode;
@@ -73,6 +76,36 @@ function useTodos() {
     let workTodoArray = [...currentTodos];
     workTodoArray.splice(indexOfTodo, 1);
     setCurrentTodos(workTodoArray);
+  };
+
+  const updateAfterDrag = (newOrderArray) => {
+    let workTodoArray = newOrderArray.map((eachId) => {
+      const arrayOfOne = currentTodos.filter((todo) => {
+        return todo.idCode === parseInt(eachId);
+      });
+      return arrayOfOne[0]; ///returns the only obj inside the array of one
+    });
+    setCurrentTodos(workTodoArray);
+  };
+
+  const updateAfterEdit = (newText, id) => {
+    let workTodoArray = currentTodos.slice();
+    console.log("id type is:", typeof id);
+    const updatedTextTodos = workTodoArray.map((todo) => {
+      if (todo.idCode === parseInt(id)) {
+        console.log("we are in");
+        let newTodo = { ...todo, text: newText };
+        return newTodo;
+      } else {
+        return todo;
+      }
+    });
+    setCurrentTodos(updatedTextTodos);
+    setToggleEditTodo({
+      status: false,
+      text: "",
+      todoId: "",
+    });
   };
 
   return {
@@ -94,6 +127,10 @@ function useTodos() {
     setUpdateData,
     toggle,
     setToggle,
+    updateAfterDrag,
+    toggleEditTodo,
+    setToggleEditTodo,
+    updateAfterEdit,
   };
 }
 

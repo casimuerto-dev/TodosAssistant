@@ -1,0 +1,7 @@
+.editDiv{
+    width: 50%;
+    
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}

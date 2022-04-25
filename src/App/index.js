@@ -7,9 +7,10 @@ import { TodoItem } from "../TodoItem";
 import { CreateTodoButton } from "../CreateTodoButton";
 import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
-import "./AppUI.css";
 import { ChangeAlert } from "../ChangeAlert";
 import { Toggle } from "../Toggle";
+import { EditTodo } from "../EditTodo";
+import "./AppUI.css";
 
 function App() {
   const {
@@ -30,7 +31,12 @@ function App() {
     setUpdateData,
     toggle,
     setToggle,
+    updateAfterDrag,
+    toggleEditTodo,
+    setToggleEditTodo,
+    updateAfterEdit,
   } = useTodos();
+
   return (
     <>
       {!loading ? (
@@ -56,6 +62,8 @@ function App() {
       >
         {(todo) => (
           <TodoItem
+            setToggleEditTodo={setToggleEditTodo}
+            idCode={todo.idCode}
             toggle={toggle}
             text={todo.text}
             key={todo.idCode}
@@ -66,6 +74,7 @@ function App() {
             deleteClick={() => {
               deleteClick(todo.idCode);
             }}
+            updateAfterDrag={updateAfterDrag}
           />
         )}
       </TodoList>
@@ -76,6 +85,15 @@ function App() {
             toggle={toggle}
             addTodo={addTodo}
             onModalOpen={onModalOpen}
+          />
+        </Modal>
+      )}
+      {toggleEditTodo.status && (
+        <Modal>
+          <EditTodo
+            toggleEditTodo={toggleEditTodo}
+            setToggleEditTodo={setToggleEditTodo}
+            updateAfterEdit={updateAfterEdit}
           />
         </Modal>
       )}

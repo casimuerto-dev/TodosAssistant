@@ -1,22 +1,29 @@
 import React from "react";
 import "./TodoItem.css";
 
-function updateTodosAfterDrag() {
+function getTodosAfterDrag() {
   const allChildren = document.querySelector(".listOfTodos").children;
-  console.log(
-    allChildren[0].children[1].innerHTML,
-    allChildren[1].children[1].innerHTML
-  );
+  return [...allChildren].map((eachTodo) => eachTodo.id);
 }
 
 export const TodoItem = (props) => {
   return (
     <li
+      onDoubleClick={() =>
+        props.setToggleEditTodo({
+          status: true,
+          text: props.text,
+          todoId: props.idCode,
+        })
+      }
+      id={props.idCode}
       onDragStart={(e) => e.target.classList.add("dragging")}
       onDragEnd={(e) => {
         e.target.classList.remove("dragging");
 
-        updateTodosAfterDrag();
+        const newOrder = getTodosAfterDrag();
+
+        props.updateAfterDrag(newOrder);
       }}
       draggable={true}
       className={`listItem ${!props.toggle && "MyOtherOtherClass"}`}

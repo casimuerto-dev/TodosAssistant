@@ -23,7 +23,7 @@ const useLocalStorage = (Item, initialState) => {
       } catch (error) {
         setError(error);
       }
-    }, 2500);
+    }, 1000);
   }, [updateData]);
 
   const updateAndStoreTodos = (newArr) => {
