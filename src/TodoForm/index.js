@@ -17,6 +17,13 @@ export function TodoForm({ addTodo, onModalOpen, toggle }) {
       setDisplayAlert(true);
     }
   };
+
+  function keyDown(e) {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  }
+
   let display = false;
   if (textValue.length >= 35) {
     display = true;
@@ -27,6 +34,8 @@ export function TodoForm({ addTodo, onModalOpen, toggle }) {
   return (
     <form className={`Form ${toggle && "toggledForm"}`} onSubmit={handleSubmit}>
       <textarea
+        autoFocus={true}
+        onKeyDown={keyDown}
         maxLength={"35"}
         value={textValue}
         onChange={(event) => {

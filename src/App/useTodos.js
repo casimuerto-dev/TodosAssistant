@@ -59,7 +59,6 @@ function useTodos() {
           (index) => index !== "no"
         );
         if (indexOfFirstCompleted.length === 0) {
-          console.log("index 0");
           workTodoArray.push({
             text,
             complete: false,
