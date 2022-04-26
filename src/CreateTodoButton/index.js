@@ -3,7 +3,11 @@ import "./CreateTodoButton.css";
 
 export function CreateTodoButton(props) {
   return (
-    <div onClick={props.onClick} className="addTodoButton">
+    <div
+      title="Crea una nueva Tarea!"
+      onClick={props.onClick}
+      className="addTodoButton"
+    >
       <p>+</p>
     </div>
   );
