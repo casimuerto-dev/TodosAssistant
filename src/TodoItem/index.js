@@ -6,6 +6,11 @@ function getTodosAfterDrag() {
   return [...allChildren].map((eachTodo) => eachTodo.id);
 }
 
+function sendToBottom(id) {
+  const completedTodo = document.getElementById(id);
+  document.querySelector(".listOfTodos").appendChild(completedTodo);
+}
+
 export const TodoItem = (props) => {
   return (
     <li
@@ -28,7 +33,15 @@ export const TodoItem = (props) => {
       draggable={true}
       className={`listItem ${!props.toggle && "MyOtherOtherClass"}`}
     >
-      <p onClick={props.completeClick} className="checkIcon">
+      <p
+        onClick={() => {
+          props.completeClick();
+          sendToBottom(props.idCode);
+          const newOrder = getTodosAfterDrag();
+          props.updateAfterDrag(newOrder);
+        }}
+        className="checkIcon"
+      >
         ✔
       </p>
       <p className={`item ${props.completed && "itemCompleted"}`}>

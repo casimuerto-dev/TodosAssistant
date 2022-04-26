@@ -52,7 +52,27 @@ function useTodos() {
     for (let i = 0; i < 100; i++) {
       let result = workTodoArray.filter((obj) => obj.idCode === i);
       if (result.length === 0) {
-        workTodoArray.push({ text, complete: false, idCode: i });
+        let rawIndexes = workTodoArray.map((todo, index) => {
+          return todo.complete ? index : "no";
+        });
+        let indexOfFirstCompleted = rawIndexes.filter(
+          (index) => index !== "no"
+        );
+        if (indexOfFirstCompleted.length === 0) {
+          console.log("index 0");
+          workTodoArray.push({
+            text,
+            complete: false,
+            idCode: i,
+          });
+        } else {
+          workTodoArray.splice(indexOfFirstCompleted[0], 0, {
+            text,
+            complete: false,
+            idCode: i,
+          });
+        }
+
         break;
       }
     }
