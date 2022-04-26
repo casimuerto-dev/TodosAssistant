@@ -21,6 +21,8 @@ export function TodoForm({ addTodo, onModalOpen, toggle }) {
   function keyDown(e) {
     if (e.key === "Enter") {
       handleSubmit(e);
+    } else if (e.key === "Escape") {
+      onModalOpen();
     }
   }
 

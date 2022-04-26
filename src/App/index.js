@@ -11,6 +11,7 @@ import { ChangeAlert } from "../ChangeAlert";
 import { Toggle } from "../Toggle";
 import { EditTodo } from "../EditTodo";
 import "./AppUI.css";
+import { Warning } from "../Warning/Warning";
 
 function App() {
   const {
@@ -35,6 +36,10 @@ function App() {
     toggleEditTodo,
     setToggleEditTodo,
     updateAfterEdit,
+    deleteWarning,
+    setDeleteWarning,
+    uncompleteWarning,
+    setUncompleteWarning,
   } = useTodos();
 
   return (
@@ -75,6 +80,8 @@ function App() {
               deleteClick(todo.idCode);
             }}
             updateAfterDrag={updateAfterDrag}
+            setDeleteWarning={setDeleteWarning}
+            setUncompleteWarning={setUncompleteWarning}
           />
         )}
       </TodoList>
@@ -95,6 +102,51 @@ function App() {
             setToggleEditTodo={setToggleEditTodo}
             updateAfterEdit={updateAfterEdit}
           />
+        </Modal>
+      )}
+      {deleteWarning.status && (
+        <Modal>
+          <Warning>
+            <h2 style={{ color: "brown" }}>¿Deseas eliminar la tarea?</h2>
+            <button
+              onClick={() => setDeleteWarning({ status: false, idCode: "" })}
+            >
+              No, cambié de parecer
+            </button>
+            <button
+              onClick={() => {
+                deleteClick(deleteWarning.idCode);
+                setDeleteWarning({ status: false, idCode: "" });
+              }}
+            >
+              Si, eliminar
+            </button>
+          </Warning>
+        </Modal>
+      )}
+
+      {uncompleteWarning.status && (
+        <Modal>
+          <Warning>
+            <h2 style={{ color: "brown" }}>
+              ¿Deseas marcar la tarea como no completada?
+            </h2>
+            <button
+              onClick={() =>
+                setUncompleteWarning({ status: false, idCode: "" })
+              }
+            >
+              No, cambié de parecer
+            </button>
+            <button
+              onClick={() => {
+                completeClick(uncompleteWarning.idCode);
+                setUncompleteWarning({ status: false, idCode: "" });
+              }}
+            >
+              Si, descompletar
+            </button>
+          </Warning>
         </Modal>
       )}
 

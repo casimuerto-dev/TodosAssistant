@@ -35,10 +35,14 @@ export const TodoItem = (props) => {
     >
       <p
         onClick={() => {
-          props.completeClick();
-          sendToBottom(props.idCode);
-          const newOrder = getTodosAfterDrag();
-          props.updateAfterDrag(newOrder);
+          if (props.completed === false) {
+            props.completeClick();
+            sendToBottom(props.idCode);
+            const newOrder = getTodosAfterDrag();
+            props.updateAfterDrag(newOrder);
+          } else {
+            props.setUncompleteWarning({ status: true, idCode: props.idCode });
+          }
         }}
         className="checkIcon"
       >
@@ -47,7 +51,12 @@ export const TodoItem = (props) => {
       <p className={`item ${props.completed && "itemCompleted"}`}>
         {props.text}
       </p>
-      <p onClick={props.deleteClick} className="deleteIcon">
+      <p
+        onClick={() =>
+          props.setDeleteWarning({ status: true, idCode: props.idCode })
+        }
+        className="deleteIcon"
+      >
         ✗
       </p>
     </li>

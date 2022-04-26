@@ -48,7 +48,7 @@
 }
 
 .listItem:hover {
-  cursor: grab;
+  cursor: default;
   box-shadow: 0 0 15px white;
   
 }

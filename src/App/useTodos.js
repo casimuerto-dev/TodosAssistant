@@ -2,6 +2,7 @@ import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
 function useTodos() {
+  //external states
   const {
     updatedTodos: currentTodos,
     updateAndStoreTodos: setCurrentTodos,
@@ -10,7 +11,7 @@ function useTodos() {
     error,
     setUpdateData,
   } = useLocalStorage("TODOS_V1", []);
-
+  //internal states
   const [open, setOpen] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
   const [toggle, setToggle] = React.useState(false);
@@ -19,7 +20,17 @@ function useTodos() {
     text: "",
     todoId: "",
   });
+  const [deleteWarning, setDeleteWarning] = React.useState({
+    status: false,
+    todoId: "",
+  });
 
+  const [uncompleteWarning, setUncompleteWarning] = React.useState({
+    status: false,
+    todoId: "",
+  });
+
+  //methods
   const onModalOpen = () => {
     setOpen((prevState) => !prevState);
   };
@@ -84,7 +95,7 @@ function useTodos() {
       return todo.idCode === idCode;
     });
     let workTodoArray = [...currentTodos];
-    workTodoArray[indexOfTodo].complete = true;
+    workTodoArray[indexOfTodo].complete = !workTodoArray[indexOfTodo].complete;
     setCurrentTodos(workTodoArray);
   };
 
@@ -150,6 +161,10 @@ function useTodos() {
     toggleEditTodo,
     setToggleEditTodo,
     updateAfterEdit,
+    deleteWarning,
+    setDeleteWarning,
+    uncompleteWarning,
+    setUncompleteWarning,
   };
 }
 
