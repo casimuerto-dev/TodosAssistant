@@ -14,6 +14,7 @@ export const TodoSearch = ({ loading, searchValue, handleSearchChange }) => {
 
   return (
     <input
+      title="Busca una tarea específica!"
       onBlur={handleBlur}
       onFocus={handleFocus}
       maxLength={"35"}
