@@ -35,6 +35,11 @@ function useTodos() {
     todoId: "",
   });
 
+  const [duplicateWarning, setDuplicateWarning] = React.useState({
+    status: false,
+    todoId: "",
+  });
+
   const [toggleName, setToggleName] = React.useState(false);
 
   //methods
@@ -145,6 +150,12 @@ function useTodos() {
     });
   };
 
+  const duplicateTodo = (id) => {
+    let workTodoArray = [...currentTodos];
+    let index = workTodoArray.findIndex((todo) => todo.idCode === parseInt(id));
+    addTodo(workTodoArray[index].text);
+  };
+
   return {
     addTodo,
     open,
@@ -162,7 +173,6 @@ function useTodos() {
     completeClick,
     deleteClick,
     setUpdateData,
-
     updateAfterDrag,
     toggleEditTodo,
     setToggleEditTodo,
@@ -177,6 +187,9 @@ function useTodos() {
     setToggleName,
     localState,
     updateAndStoreLocalState,
+    duplicateWarning,
+    setDuplicateWarning,
+    duplicateTodo,
   };
 }
 

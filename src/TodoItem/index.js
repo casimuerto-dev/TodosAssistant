@@ -1,5 +1,7 @@
 import React from "react";
 import "./TodoItem.css";
+import duplicate from "./duplicate.png";
+import duplicateBlack from "./duplicateBlack.png";
 
 function getTodosAfterDrag() {
   const allChildren = document.querySelector(".listOfTodos").children;
@@ -51,6 +53,28 @@ export const TodoItem = (props) => {
       <p className={`item ${props.completed && "itemCompleted"}`}>
         {props.text}
       </p>
+      {props.toggle ? (
+        <img
+          className="deleteIcon"
+          style={{ width: "20px", padding: "0", margin: "0px 3px 0px" }}
+          alt="duplicate logo"
+          src={duplicate}
+          onClick={() =>
+            props.setDuplicateWarning({ status: true, idCode: props.idCode })
+          }
+        />
+      ) : (
+        <img
+          className="deleteIcon"
+          style={{ width: "20px", padding: "0", margin: "0px 3px 0px" }}
+          alt="duplicate logo"
+          src={duplicateBlack}
+          onClick={() =>
+            props.setDuplicateWarning({ status: true, idCode: props.idCode })
+          }
+        />
+      )}
+
       <p
         onClick={() =>
           props.setDeleteWarning({ status: true, idCode: props.idCode })

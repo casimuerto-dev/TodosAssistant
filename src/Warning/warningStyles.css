@@ -1,0 +1,40 @@
+.warning{background:radial-gradient(yellow,red);
+border-radius: 10px;
+padding: 0px 5px 10px;
+}
+
+
+.warningTitle{color:rgb(68, 31, 4) !important;
+border-radius: 4px;
+font-family: "Varela Round", sans-serif;
+}
+
+
+.yesNoDiv{display: flex;
+justify-content: space-around;}
+
+.noButton{background-color: rgb(176, 72, 58);
+color: white;
+font-family: 'Handlee', cursive;
+font-size: 18px;
+border: none;
+box-shadow: 0px 0px 5px black;
+border-radius: 5px;}
+
+.noButton:hover{cursor: pointer;
+box-shadow: none;}
+
+.noButton:focus{box-shadow: none;}
+
+.yesButton{background-color: rgb(75, 171, 255);
+color:white;
+font-family: 'Handlee', cursive;
+font-size: 18px;
+border: none;
+box-shadow: 0px 0px 5px black;
+border-radius: 5px;}
+
+.yesButton:hover{cursor: pointer;
+box-shadow: none;}
+
+.yesButton:focus{box-shadow: none;}

@@ -45,6 +45,9 @@ function App() {
     setToggleName,
     localState,
     updateAndStoreLocalState,
+    duplicateWarning,
+    setDuplicateWarning,
+    duplicateTodo,
   } = useTodos();
 
   return (
@@ -87,6 +90,7 @@ function App() {
             updateAfterDrag={updateAfterDrag}
             setDeleteWarning={setDeleteWarning}
             setUncompleteWarning={setUncompleteWarning}
+            setDuplicateWarning={setDuplicateWarning}
           />
         )}
       </TodoList>
@@ -103,6 +107,7 @@ function App() {
       {toggleEditTodo.status && (
         <Modal>
           <EditTodo
+            toggleTheme={localState}
             toggleEditTodo={toggleEditTodo}
             setToggleEditTodo={setToggleEditTodo}
             updateAfterEdit={updateAfterEdit}
@@ -112,20 +117,26 @@ function App() {
       {deleteWarning.status && (
         <Modal>
           <Warning>
-            <h2 style={{ color: "brown" }}>¿Deseas eliminar la tarea?</h2>
-            <button
-              onClick={() => setDeleteWarning({ status: false, idCode: "" })}
-            >
-              No, cambié de parecer
-            </button>
-            <button
-              onClick={() => {
-                deleteClick(deleteWarning.idCode);
-                setDeleteWarning({ status: false, idCode: "" });
-              }}
-            >
-              Si, eliminar
-            </button>
+            <h2 className="warningTitle" style={{ color: "brown" }}>
+              ¿Deseas eliminar la tarea?
+            </h2>
+            <div className="yesNoDiv">
+              <button
+                className="noButton"
+                onClick={() => setDeleteWarning({ status: false, idCode: "" })}
+              >
+                No, cambié de opinión
+              </button>
+              <button
+                className="yesButton"
+                onClick={() => {
+                  deleteClick(deleteWarning.idCode);
+                  setDeleteWarning({ status: false, idCode: "" });
+                }}
+              >
+                Si, eliminar
+              </button>
+            </div>
           </Warning>
         </Modal>
       )}
@@ -133,24 +144,57 @@ function App() {
       {uncompleteWarning.status && (
         <Modal>
           <Warning>
-            <h2 style={{ color: "brown" }}>
+            <h2 className="warningTitle" style={{ color: "brown" }}>
               ¿Deseas marcar la tarea como no completada?
             </h2>
-            <button
-              onClick={() =>
-                setUncompleteWarning({ status: false, idCode: "" })
-              }
-            >
-              No, cambié de parecer
-            </button>
-            <button
-              onClick={() => {
-                completeClick(uncompleteWarning.idCode);
-                setUncompleteWarning({ status: false, idCode: "" });
-              }}
-            >
-              Si, descompletar
-            </button>
+            <div className="yesNoDiv">
+              <button
+                className="noButton"
+                onClick={() =>
+                  setUncompleteWarning({ status: false, idCode: "" })
+                }
+              >
+                No, cambié de opinión
+              </button>
+              <button
+                className="yesButton"
+                onClick={() => {
+                  completeClick(uncompleteWarning.idCode);
+                  setUncompleteWarning({ status: false, idCode: "" });
+                }}
+              >
+                Si, descompletar
+              </button>
+            </div>
+          </Warning>
+        </Modal>
+      )}
+
+      {duplicateWarning.status && (
+        <Modal>
+          <Warning>
+            <h2 className="warningTitle" style={{ color: "brown" }}>
+              ¿Deseas duplicar la tarea?
+            </h2>
+            <div className="yesNoDiv">
+              <button
+                className="noButton"
+                onClick={() =>
+                  setDuplicateWarning({ status: false, idCode: "" })
+                }
+              >
+                No, cambié de opinión
+              </button>
+              <button
+                className="yesButton"
+                onClick={() => {
+                  duplicateTodo(duplicateWarning.idCode);
+                  setDuplicateWarning({ status: false, idCode: "" });
+                }}
+              >
+                Si, duplicar
+              </button>
+            </div>
           </Warning>
         </Modal>
       )}
