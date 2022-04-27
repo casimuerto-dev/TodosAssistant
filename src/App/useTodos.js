@@ -132,10 +132,9 @@ function useTodos() {
 
   const updateAfterEdit = (newText, id) => {
     let workTodoArray = currentTodos.slice();
-    console.log("id type is:", typeof id);
+
     const updatedTextTodos = workTodoArray.map((todo) => {
       if (todo.idCode === parseInt(id)) {
-        console.log("we are in");
         let newTodo = { ...todo, text: newText };
         return newTodo;
       } else {

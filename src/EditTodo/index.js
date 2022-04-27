@@ -1,5 +1,4 @@
 import React from "react";
-import "./editTodoStyles.css";
 
 export function EditTodo(props) {
   function handleKeyDown(e) {
@@ -12,21 +11,49 @@ export function EditTodo(props) {
   const [currentText, setCurrentText] = React.useState(
     props.toggleEditTodo.text
   );
+
+  const [displayAlert, setDisplayAlert] = React.useState(false);
+
   const onChange = (e) => {
     setCurrentText(e.target.value);
+    setDisplayAlert(false);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (currentText !== "") {
+      props.updateAfterEdit(currentText, props.toggleEditTodo.todoId);
+
+      setDisplayAlert(false);
+      props.setToggleEditTodo({ ...props.toggleEditTodo, status: false });
+    } else {
+      setDisplayAlert(true);
+    }
+  };
+
+  function keyDown(e) {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    } else if (e.key === "Escape") {
+      props.setToggleEditTodo({ ...props.toggleEditTodo, status: false });
+    }
+  }
+
   return (
-    <form className={`Form ${!props.toggleTheme && "toggledForm"}`}>
+    <form
+      onSubmit={handleSubmit}
+      className={`Form ${!props.toggleTheme && "toggledForm"}`}
+    >
       <textarea
-        onKeyDown={handleKeyDown}
+        onKeyDown={keyDown}
         autoFocus={true}
+        maxLength={"35"}
         onChange={onChange}
         value={currentText}
         className="TodoCreator"
         placeholder="Edita tu tarea!"
       ></textarea>
-
+      {displayAlert && <p className="smallAlert">Porfa escribe algo</p>}
       <div className="buttonsDiv">
         <button
           className={`CerrarModal ${
@@ -40,9 +67,7 @@ export function EditTodo(props) {
         </button>
         <button
           className={`CrearTodo ${!props.toggleTheme && "toggledCrearTodo"}`}
-          onClick={() => {
-            props.updateAfterEdit(currentText, props.toggleEditTodo.todoId);
-          }}
+          type="submit"
         >
           ¡Guradar!
         </button>

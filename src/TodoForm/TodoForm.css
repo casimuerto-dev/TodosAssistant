@@ -68,7 +68,7 @@
   width: 100px;
   border-radius: 20px;
   border: 1px solid white;
-  background-color: rgba(255, 166, 0, 0.837);
+  background-color: rgba(17, 255, 0, 0.837);
 }
 
 .CrearTodo:hover {
@@ -87,6 +87,7 @@
   font-weight: bolder;
   background-color: rgba(255, 166, 0, 0.837);
   padding-bottom: 5px;
+  padding-top: 3px;
 }
 
 .CerrarModal:hover {

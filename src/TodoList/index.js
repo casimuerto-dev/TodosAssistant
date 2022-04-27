@@ -42,7 +42,6 @@ export function TodoList(props) {
           );
         }
       }}
-      onDragEnd={() => console.log("drag end")}
       className={`listOfTodos ${
         props.searchActivated === true ? "activated" : ""
       } ${props.loading && "loadingList"} ${
