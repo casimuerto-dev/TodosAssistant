@@ -6,15 +6,20 @@ function useTodos() {
   const {
     updatedTodos: currentTodos,
     updateAndStoreTodos: setCurrentTodos,
+    localName,
+    updateAndStoreLocalName,
+    localState,
+    updateAndStoreLocalState,
     loading,
     setLoading,
     error,
     setUpdateData,
-  } = useLocalStorage("TODOS_V1", []);
+  } = useLocalStorage("TODOS_V1", [[], ", escribe tu nombre!", "true"]);
+
   //internal states
   const [open, setOpen] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
-  const [toggle, setToggle] = React.useState(false);
+
   const [toggleEditTodo, setToggleEditTodo] = React.useState({
     status: false,
     text: "",
@@ -29,6 +34,8 @@ function useTodos() {
     status: false,
     todoId: "",
   });
+
+  const [toggleName, setToggleName] = React.useState(false);
 
   //methods
   const onModalOpen = () => {
@@ -155,8 +162,7 @@ function useTodos() {
     completeClick,
     deleteClick,
     setUpdateData,
-    toggle,
-    setToggle,
+
     updateAfterDrag,
     toggleEditTodo,
     setToggleEditTodo,
@@ -165,6 +171,12 @@ function useTodos() {
     setDeleteWarning,
     uncompleteWarning,
     setUncompleteWarning,
+    localName,
+    updateAndStoreLocalName,
+    toggleName,
+    setToggleName,
+    localState,
+    updateAndStoreLocalState,
   };
 }
 

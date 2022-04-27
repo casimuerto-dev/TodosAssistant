@@ -1,7 +1,7 @@
 import React from "react";
-import "./TodoForm.css";
+import "../TodoForm/TodoForm.css";
 
-export function TodoForm({ addTodo, onModalOpen, toggle }) {
+export function NameModal(props) {
   const [textValue, setTextValue] = React.useState("");
 
   const [displayAlert, setDisplayAlert] = React.useState(false);
@@ -9,10 +9,9 @@ export function TodoForm({ addTodo, onModalOpen, toggle }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (textValue !== "") {
-      addTodo(textValue);
-
+      props.setUserName(textValue);
       setDisplayAlert(false);
-      onModalOpen();
+      props.setToggleName(false);
     } else {
       setDisplayAlert(true);
     }
@@ -22,7 +21,7 @@ export function TodoForm({ addTodo, onModalOpen, toggle }) {
     if (e.key === "Enter") {
       handleSubmit(e);
     } else if (e.key === "Escape") {
-      onModalOpen();
+      props.setToggleName(false);
     }
   }
 
@@ -35,7 +34,7 @@ export function TodoForm({ addTodo, onModalOpen, toggle }) {
 
   return (
     <form
-      className={`Form ${!toggle && "toggledForm"}`}
+      className={`Form ${!props.toggle && "toggledForm"}`}
       onSubmit={handleSubmit}
     >
       <textarea
@@ -48,7 +47,7 @@ export function TodoForm({ addTodo, onModalOpen, toggle }) {
           setDisplayAlert(false);
         }}
         className="TodoCreator"
-        placeholder="Escribe tu nueva tarea!"
+        placeholder="Escribe tu nombre!"
       ></textarea>
       {display && (
         <p className="smallAlert">Llegaste al máximo de caracteres!</p>
@@ -56,14 +55,15 @@ export function TodoForm({ addTodo, onModalOpen, toggle }) {
       {displayAlert && <p className="smallAlert">Porfa escribe algo</p>}
       <div className="buttonsDiv">
         <button
-          className={`CerrarModal ${!toggle && "toggledCerrarModal"}`}
+          className={`CerrarModal ${!props.toggle && "toggledCerrarModal"}`}
           type="button"
-          onClick={onModalOpen}
+          onClick={() => props.setToggleName(false)}
         >
           ✗
         </button>
+
         <button
-          className={`CrearTodo ${!toggle && "toggledCrearTodo"}`}
+          className={`CrearTodo ${!props.toggle && "toggledCrearTodo"}`}
           type="submit"
         >
           Agregar!

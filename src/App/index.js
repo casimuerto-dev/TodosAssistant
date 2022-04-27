@@ -12,6 +12,7 @@ import { Toggle } from "../Toggle";
 import { EditTodo } from "../EditTodo";
 import "./AppUI.css";
 import { Warning } from "../Warning/Warning";
+import { NameModal } from "../NameModal";
 
 function App() {
   const {
@@ -30,8 +31,6 @@ function App() {
     deleteClick,
     searchActivated,
     setUpdateData,
-    toggle,
-    setToggle,
     updateAfterDrag,
     toggleEditTodo,
     setToggleEditTodo,
@@ -40,12 +39,18 @@ function App() {
     setDeleteWarning,
     uncompleteWarning,
     setUncompleteWarning,
+    localName,
+    updateAndStoreLocalName,
+    toggleName,
+    setToggleName,
+    localState,
+    updateAndStoreLocalState,
   } = useTodos();
 
   return (
     <>
       {!loading ? (
-        <TodoCounter count={count} completed={completed} toggle={toggle} />
+        <TodoCounter count={count} completed={completed} toggle={localState} />
       ) : (
         <div className="topSkeleton"></div>
       )}
@@ -56,7 +61,7 @@ function App() {
       />
 
       <TodoList
-        toggle={toggle}
+        toggle={localState}
         searchValue={searchValue}
         error={error}
         count={count}
@@ -69,7 +74,7 @@ function App() {
           <TodoItem
             setToggleEditTodo={setToggleEditTodo}
             idCode={todo.idCode}
-            toggle={toggle}
+            toggle={localState}
             text={todo.text}
             key={todo.idCode}
             completed={todo.complete}
@@ -89,7 +94,7 @@ function App() {
       {open && (
         <Modal>
           <TodoForm
-            toggle={toggle}
+            toggle={localState}
             addTodo={addTodo}
             onModalOpen={onModalOpen}
           />
@@ -150,9 +155,25 @@ function App() {
         </Modal>
       )}
 
+      {toggleName && (
+        <Modal>
+          <NameModal
+            toggle={localState}
+            setToggleName={setToggleName}
+            setUserName={updateAndStoreLocalName}
+          />
+        </Modal>
+      )}
+
       <CreateTodoButton onClick={onModalOpen} />
 
-      <Toggle toggle={toggle} setToggle={setToggle} />
+      <Toggle
+        userName={localName}
+        toggle={localState}
+        setToggle={updateAndStoreLocalState}
+        setToggleName={setToggleName}
+        loading={loading}
+      />
 
       <ChangeAlert setLoading={setLoading} reload={setUpdateData} />
     </>

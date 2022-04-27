@@ -31,7 +31,7 @@ export const TodoItem = (props) => {
         props.updateAfterDrag(newOrder);
       }}
       draggable={true}
-      className={`listItem ${!props.toggle && "MyOtherOtherClass"}`}
+      className={`listItem ${props.toggle && "MyOtherOtherClass"}`}
     >
       <p
         onClick={() => {

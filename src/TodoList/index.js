@@ -49,7 +49,7 @@ export function TodoList(props) {
     >
       {props.error && props.onError()}
       {!props.loading && props.count === 0 && (
-        <h2 className={`empty ${props.toggle && "toggledEmpty"}`}>
+        <h2 className={`empty ${!props.toggle && "toggledEmpty"}`}>
           Crea una tarea!
         </h2>
       )}
@@ -57,7 +57,7 @@ export function TodoList(props) {
       {props.searchedTodos.length !== 0 && !props.loading ? (
         props.searchedTodos.map(renderFunction)
       ) : !props.loading && props.count !== 0 ? (
-        <h1 className={`empty ${props.toggle && "toggledEmpty"}`}>
+        <h1 className={`empty ${!props.toggle && "toggledEmpty"}`}>
           No hay tareas para mostrar con {`'${props.searchValue}'.`}
         </h1>
       ) : null}

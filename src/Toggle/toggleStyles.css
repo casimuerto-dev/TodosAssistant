@@ -1,17 +1,17 @@
 .toggleContainer{
 
     width: 90%;
+    text-align: center;
 display: grid;
-justify-content: center;
-text-align: center;
-grid-template-columns: 90% 10%;
+grid-gap: 20px;
+grid-template-columns: 1fr 1fr;
 }
 
 .toggleButton:hover{
     cursor: pointer;
 }
 
-.toggleButton{ justify-self: center;
+.toggleButton{ justify-self: right;
     width: 100px;
     color: white;
     grid-column: 2;
@@ -27,3 +27,18 @@ grid-template-columns: 90% 10%;
     .toggleContainer{grid-template-columns: 65% 35%;}
     
 }
+
+.userName{margin: 0; 
+    grid-column: 1; 
+    justify-self: left;
+margin: 0;
+
+color: white;
+font-family: 'Handlee', cursive;
+}
+
+.userName:hover{
+    cursor: pointer;
+}
+
+
