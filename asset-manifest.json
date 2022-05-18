@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/first-react-project-todos/static/css/main.a0bb05e1.css",
-    "main.js": "/first-react-project-todos/static/js/main.9df69709.js",
-    "static/media/duplicate.png": "/first-react-project-todos/static/media/duplicate.be1f9a128f76331bbf0b.png",
-    "index.html": "/first-react-project-todos/index.html",
-    "main.a0bb05e1.css.map": "/first-react-project-todos/static/css/main.a0bb05e1.css.map",
-    "main.9df69709.js.map": "/first-react-project-todos/static/js/main.9df69709.js.map"
+    "main.css": "/TodosAssistant/static/css/main.a0bb05e1.css",
+    "main.js": "/TodosAssistant/static/js/main.c24f58dc.js",
+    "static/media/duplicate.png": "/TodosAssistant/static/media/duplicate.be1f9a128f76331bbf0b.png",
+    "index.html": "/TodosAssistant/index.html",
+    "main.a0bb05e1.css.map": "/TodosAssistant/static/css/main.a0bb05e1.css.map",
+    "main.c24f58dc.js.map": "/TodosAssistant/static/js/main.c24f58dc.js.map"
   },
   "entrypoints": [
     "static/css/main.a0bb05e1.css",
-    "static/js/main.9df69709.js"
+    "static/js/main.c24f58dc.js"
   ]
 }
