@@ -2,7 +2,7 @@
   "name": "first-react-project-todos",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://casimuerto-dev.github.io/first-react-project-todos",
+  "homepage": "https://casimuerto-dev.github.io/TodosAssistant/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
